@@ -28,7 +28,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "/public")));
 app.engine("ejs", ejsMate);
 const session = require("express-session");
-const MongoStore = require("connect-mongo");
+const {MongoStore} = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -39,13 +39,14 @@ const User = require("./models/user.js");
 const userRouter = require("./routes/user.js");
 // const MONGO_URL="mongodb://127.0.0.1:27017/wanderlust";   //localhost db
 const db_url = process.env.ATLASDB_URL;
-console.log("MongoDB URL exists:", !!db_url);
+
 main()
   .then(() => {
     console.log("connected to db");
   })
   .catch((err) => {
     console.log(err);
+    process.exit(1);
   });
 async function main() {
   await mongoose.connect(db_url);
@@ -79,19 +80,8 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-// app.get("/demoUser",async(req,res) =>{
-//     let demoUser = new User({
-//       email :" student234@gmail.com",
-//       username: "first-user"
-//     });
-//    let registeredUser= await User.register(demoUser,"helloUser");
-//    res.send(registeredUser);
-// });
 
-// app.get("/", (req, res) => {
-//   console.log("Hi..i'm root.");
-//   res.send("hi...i'm root");
-// });
+
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
@@ -118,6 +108,11 @@ app.use((err, req, res, next) => {
 
   // res.status(statusCode).send(message);
 });
-app.listen(8080, () => {
-  console.log("app is listening");
+// app.listen(8080, () => {
+//   console.log("app is listening");
+// });
+const PORT = process.env.PORT || 10000;
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`app is listening on port ${PORT}`);
 });
