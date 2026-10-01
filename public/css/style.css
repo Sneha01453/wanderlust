@@ -29,7 +29,7 @@ body{
 
        .f-info{
          height:150px;
-         background-color: #dec9cb;
+         background-color: #6eb1f0a1;
          text-align: center;
          display: flex;
          flex-wrap: wrap;
@@ -37,17 +37,24 @@ body{
          align-items: space-evenly;
        }
        .f-info-socials ,
-        .f-info-links,
-        .f-info-brands {
+       .f-info-links
+         {
          width:100%;
          align-items: center;
            display: flex;
            justify-content: center;
+           
+       }
+      
+       .f-info-brands{
+         color:rgb(3, 3, 74);
+        padding-top: 12px;
        }
        .f-info-socials i{
          font-size:1.3rem ; 
          margin-right: 1rem;
          margin-top: 1rem;
+         color:rgba(52, 62, 111, 0.666)
        }
        
       .f-info-links a{
@@ -97,7 +104,7 @@ body{
       }
       /* edit */
       .edit-btn{
-         background-color:#fe424d !important;
+         background-color:#4fb8ff !important;
          border:none !important;
       }
       /* show page */

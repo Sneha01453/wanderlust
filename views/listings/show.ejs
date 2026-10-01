@@ -13,22 +13,22 @@
         <div class="card col-6 offset-3 show-card listing-card">
             <img src="<%=listing.image.url%>" class="card-img-top show-img" alt="listing_image">
             <div class="card-body">
-                <p class="card-text">Owned by <i>
+                <p class="card-text">Owned by <b><i>
                         <%=listing.owner.username%>
-                    </i></p>
+                    </i></b></p>
 
                 <p class="card-text">
-                    <%=listing.description%>
+                   Description : <%=listing.description%>
                 </p>
 
-                <p class="card-text"> &#8377;<%=listing.price%>
+                <p class="card-text">Price : &#8377;<%=listing.price%>
                 </p>
 
-                <p class="card-text">
+                <p class="card-text">Location :
                     <%=listing.location%>
                 </p>
 
-                <p class="card-text">
+                <p class="card-text">Country :
                     <%=listing.country%>
                 </p>
 
@@ -39,10 +39,10 @@
         <br>
         <% if(currUser && listing.owner._id.equals(currUser._id)) {%>
             <div class="btns">
-                <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
+                <a href="/listings/<%=listing._id%>/edit"  type="button" class="btn btn-outline-info offset-3">Edit</a>
 
                 <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
-                    <button class="btn btn-dark offset-5">Delete</button>
+                    <button class="btn btn-outline-danger offset-5">Delete</button>
                 </form>
             </div>
             <% } %>
@@ -101,7 +101,7 @@
                                             <form class="mb-3"
                                                 action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE"
                                                 method="POST">
-                                                <button class="btn btn-sm btn-dark">Delete</button>
+                                                <button class="btn btn-sm btn-outline-danger">Delete</button>
                                             </form>
                                         </div>
                                     </div>
