@@ -2,7 +2,9 @@
 // require("dotenv").config();
 // };
 
-
+const dns = require("dns");
+dns.setServers(["8.8.8.8", "1.1.1.1"]);
+dns.setDefaultResultOrder("ipv4first");
 require("dotenv").config();
 // console.log(process.env.SECRET);
 
@@ -113,7 +115,7 @@ app.use((err, req, res, next) => {
 // app.listen(8080, () => {
 //   console.log("app is listening");
 // });
-const PORT = process.env.PORT || 10000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`app is listening on port ${PORT}`);
